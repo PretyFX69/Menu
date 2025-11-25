@@ -1,0 +1,221 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CyberZain — Menu Panel Pterodactyl</title>
+  <style>
+    /* Reset + utilities */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;overflow:hidden}/* Matrix-like animated background (canvas covers full screen) */
+#matrixCanvas{position:fixed;inset:0;z-index:0;display:block}
+
+/* Soft radial overlay to increase contrast */
+.overlay{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 20% 20%, rgba(0,0,0,0.55), transparent 25%), radial-gradient(ellipse at 80% 80%, rgba(0,0,0,0.4), transparent 30%)}
+
+/* Centered card */
+.card{
+  position:relative;z-index:2;max-width:920px;margin:6vh auto;padding:28px;border-radius:16px;backdrop-filter: blur(6px) saturate(130%);
+  background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));box-shadow:0 8px 30px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+.header{
+  display:flex;align-items:center;gap:16px;margin-bottom:18px
+}
+
+/* Animated multicolor title */
+.brand{
+  font-weight:700;font-size:28px;line-height:1;color:#fff;letter-spacing:0.4px;display:inline-block;
+  background:linear-gradient(90deg,#ff4da6,#ffd54a,#4df5ff,#7d6bff,#ff6b6b);
+  background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rainbow 6s linear infinite;
+}
+@keyframes rainbow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.subtitle{color:rgba(255,255,255,0.75);font-size:13px}
+
+/* Menu grid */
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+
+.menu a{
+  display:flex;align-items:center;gap:14px;padding:14px;border-radius:12px;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease;cursor:pointer;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)
+}
+.menu a:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+
+.icon{
+  width:56px;height:56px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:20px;color:#000;background:linear-gradient(135deg,#fff,#e6eefc);box-shadow:inset 0 -6px 12px rgba(0,0,0,0.06)
+}
+
+.item-content{flex:1}
+.item-title{font-weight:600;color:#fff;margin-bottom:4px}
+.item-desc{font-size:13px;color:rgba(255,255,255,0.7)}
+
+/* Footer controls */
+.controls{display:flex;gap:10px;align-items:center;margin-top:18px}
+.input{flex:1;min-width:0}
+.input input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#fff}
+.btn{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,#7d6bff,#4df5ff);color:#03203A;font-weight:700;cursor:pointer}
+
+/* small note */
+.note{margin-top:12px;font-size:12px;color:rgba(255,255,255,0.6)}
+
+/* Responsive tweaks */
+@media (max-width:640px){.card{margin:4vh 12px;padding:18px}.brand{font-size:20px}}
+
+/* accessible focus */
+a:focus,.btn:focus,input:focus{outline:3px solid rgba(125,107,255,0.18);outline-offset:2px}
+
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+  <div class="overlay"></div>  <main class="card" role="main">
+    <div class="header">
+      <div class="brand">Server⚡ CyberZain</div>
+      <div style="flex:1">
+        <div class="subtitle">Menu cepat akses Pterodactyl — klik icon untuk masuk</div>
+      </div>
+      <div style="text-align:right;min-width:150px">
+        <div style="font-size:12px;color:rgba(255,255,255,0.6)">Status</div>
+        <div style="font-weight:700;color:#8bf58b;font-size:13px">Siap</div>
+      </div>
+    </div><div class="menu" aria-label="Menu akses panel">
+  <!-- Replace HREF with your panel URL -->
+  <a href="https://cyberrzainn.serverku.biz.id" target="_blank" rel="noopener" data-link="panel">
+    <div class="icon">🌐</div>
+    <div class="item-content">
+      <div class="item-title">Masuk Panel</div>
+      <div class="item-desc">Buka panel Pterodactyl (login) — buka di tab baru</div>
+    </div>
+  </a>
+
+  <a href="https://subs4unlock.id/smt3me" target="_blank" rel="noopener" data-link="home">
+    <div class="icon">📥</div>
+    <div class="item-content">
+      <div class="item-title">Download Script Free</div>
+      <div class="item-desc">Langsung Menuju Download Script Gratis Khusus Buyer</div>
+    </div>
+  </a>
+
+  <a href="https://pretyfx69.github.io/Loading-AI/" target="_blank" rel="noopener" data-link="panel">
+    <div class="icon">🤖</div>
+    <div class="item-content">
+      <div class="item-title">Assistant CyberZain</div>
+      <div class="item-desc">Buka Assistant (CyberZain) — buka di tab baru</div>
+    </div>
+  </a>
+ <a href="https://api.whatsapp.com/send?phone=+6285713164894" target="_blank" rel="noopener" data-link="home">
+<div class="input"><input id="panelInput" type="text" placeholder="Masukkan / tempel link panel (contoh: https://panel.example.com)" value="https://t.me/alwysprtyfx" aria-label="Masukkan link panel"/> </div>
+  <button class="btn" id="goBtn">Tekan Melihat Profil Owner Jika Ada Kendala Di Server</button>
+</div>
+</a>
+<div class="item-title">🌐BERIKUT DATA PANEL ANDA</div>
+<div class="note"></div>
+<div class="item-desc">🔒USERNAME:</div>
+<div class="note"></div>
+<div class="item-desc">🔑PASSWORD:</div>
+<div class="note"></div>
+<div class="item-title">📍NOTE:</div>
+      <div class="item-desc">WEB JANGAN DI BUAT DDOS TUTUPI DOMAIN KETIKA DI SS DOMAIN JANGAN DI SEBAR TRANSAKSI NO REFFUND EXPIRED 1 BULAN PENUH GARANSI 10 DAY 1 KALI CLAIM JANGAN LUPA SS DONE.</div>
+
+  </main>  <script>
+    // MATRIX RAIN - Canvas implementation (subtle hacker vibe)
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = innerWidth;
+    let H = canvas.height = innerHeight;
+
+    const letters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#%*-+=/<>'.split('');
+    const fontSize = Math.max(10, Math.floor(Math.min(W, H) / 80));
+    const columns = Math.floor(W / fontSize);
+    const drops = new Array(columns).fill(1);
+
+    function resize(){
+      W = canvas.width = innerWidth; H = canvas.height = innerHeight;
+      const cols = Math.floor(W / fontSize);
+      drops.length = cols;
+      for(let i=0;i<drops.length;i++) if(!drops[i]) drops[i]=1;
+    }
+    addEventListener('resize', resize);
+
+    function draw(){
+      // translucent bg for trailing effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.font = fontSize + 'px monospace';
+
+      for(let i=0;i<drops.length;i++){
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        // glow + color subtle green/teal
+        ctx.fillStyle = 'rgba(140, 255, 180, 0.85)';
+        ctx.fillText(text, x, y);
+
+        if(y > H && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      requestAnimationFrame(draw);
+    }
+    // Initialize canvas with dark fill to avoid white flash
+    ctx.fillStyle = '#000'; ctx.fillRect(0,0,W,H);
+    draw();
+
+    // Interactivity: copy link, open link, edit
+    const panelInput = document.getElementById('panelInput');
+    const copyBtn = document.getElementById('copyBtn');
+    const goBtn = document.getElementById('goBtn');
+    const customBtn = document.getElementById('customBtn');
+
+    copyBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      navigator.clipboard.writeText(panelInput.value).then(()=>{
+        copyBtn.querySelector('.item-title')?.insertAdjacentText('afterend',' ✅');
+        setTimeout(()=>location.reload(),700);
+      }).catch(()=>alert('Gagal menyalin — periksa izin clipboard'));
+    });
+
+    goBtn.addEventListener('click', ()=>{
+      let url = panelInput.value.trim();
+      if(!url) return alert('Masukkan link panel terlebih dahulu');
+      if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+      window.open(url, '_blank', 'noopener');
+    });
+
+    customBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const newUrl = prompt('Masukkan URL panel baru:', panelInput.value);
+      if(newUrl !== null) panelInput.value = newUrl;
+    });
+
+    // Make menu anchors use panelInput value if they have default placeholder
+    document.querySelectorAll('.menu a[target="_blank"]').forEach(a=>{
+      a.addEventListener('click', (ev)=>{
+        // if user didn't change input, allow default link; else open from input
+        const inputVal = panelInput.value.trim();
+        if(inputVal && inputVal !== 'https://zyberzainn.serverku.biz.id'){
+          ev.preventDefault();
+          let href = inputVal;
+          // if anchor has /login, preserve that path
+          if(a.getAttribute('href').includes('/login')){
+            if(!href.endsWith('/')) href += '/';
+            href = href.replace(/\/+$/,'') + '/login';
+          }
+          if(!/^https?:\/\//i.test(href)) href = 'https://' + href;
+          window.open(href, '_blank', 'noopener');
+        }
+      })
+    });
+
+    // Accessibility: keyboard shortcut G to open link
+    addEventListener('keydown', e=>{
+      if(e.key.toLowerCase()==='g' && document.activeElement.tagName !== 'INPUT'){
+        goBtn.click();
+      }
+    });
+  </script></body>
+</html>
