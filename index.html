@@ -71,7 +71,24 @@ a:focus,.btn:focus,input:focus{outline:3px solid rgba(125,107,255,0.18);outline-
   </style>
 </head>
 <body>
-  <audio id="bgm" src="https://github.com/PretyFX69/music-files/raw/refs/heads/main/Salamun%20Kamiskil%20Khitam.mp3" autoplay loop hidden></audio>
+    <audio id="bgm" src="https://github.com/PretyFX69/music-files/raw/refs/heads/main/Salamun%20Kamiskil%20Khitam.mp3" loop></audio>
+
+    <script>
+        const bgm = document.getElementById("bgm");
+
+        // Coba autoplay
+        document.addEventListener("DOMContentLoaded", () => {
+            bgm.play().catch(() => {
+                console.log("Autoplay diblokir, menunggu interaksi user…");
+            });
+        });
+
+        // Saat user interaksi (sentuh layar)
+        document.addEventListener("click", () => {
+            bgm.play();
+        });
+    </script>
+</body>
   <canvas id="matrixCanvas"></canvas>
   <div class="overlay"></div>  <main class="card" role="main">
     <div class="header">
